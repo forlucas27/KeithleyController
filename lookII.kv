@@ -1,0 +1,107 @@
+#:kivy 1.10.1
+#:import MeshLinePlot kivy.garden.graph.MeshLinePlot
+
+
+Logic:
+    cols: 1
+    borderless: 0
+    GridLayout:
+        rows: 2
+        size: root.size
+        GridLayout:
+            cols: 2
+            row_default_height: 500
+            row_force_default: True
+            GridLayout:
+                cols: 1
+                Graph:
+                    size_hint_x: None 
+                    width: 580 
+                    id: graph
+                    xlabel: "Voltage (V)"
+                    ylabel: "Current"
+            GridLayout:
+                cols: 2
+                padding: [200, 0,0,0]
+                col_default_width: 100
+                col_force_default: True
+                GridLayout:
+                    rows: 7
+                    padding: [0,0,10,0]
+                    spacing: [20,20]
+                    Label:
+                        text: "Cycle (y/n)"
+                    Label:
+                        text: "Number of Scans"
+                    Label:
+                        text: "Initial Voltage (V)"
+                    Label:
+                        text: "Fintal Voltage (V)"
+                    Label:
+                        text: "Interval (V)"
+                    Label:
+                        text: "Pause (s)"
+                    Button:
+                        id: startI
+                        text: "Start"
+                        bold: True
+                        on_press: root.start_measurement()
+                        on_release: root.start()
+                GridLayout:
+                    rows: 7
+                    padding: [10,0,5,0]
+                    spacing: [20,20]
+                    TextInput:
+                        id: cycle
+                        text: "y"
+                        multiline: False
+                    TextInput: 
+                        id: scan_number
+                        text: "1"
+                        multiline: False
+                    TextInput:
+                        id: startV
+                        text: "-1"
+                        multiline: False
+                    TextInput:
+                        id: endV
+                        text: "1"
+                        multiline: False
+                    TextInput:
+                        id: interval
+                        text: "0.1"
+                        multiline: False
+                    TextInput:
+                        id: pause
+                        text: "0.1"
+                        multiline: False
+                    Button:
+                        text: "Stop"
+                        bold: True
+                        on_press: root.stop()
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            row_default_height: 100 
+            row_force_default: True
+            GridLayout:
+                rows: 2
+                padding: [75,10,150,0]
+                Label:
+                    text: "Current folder"
+                Label:
+                    text: "Filename"
+            GridLayout:
+                rows: 2
+                size_hint_x: 50
+                col_default_width: 300
+                padding: [125,10,300,0]
+                spacing: [20,20]
+                TextInput:
+                    id: curr_folder
+                    text: "C:/Users/zsiwy/Rachel"
+                    multiline: False
+                TextInput:
+                    id: file_name
+                    text: "test.txt"
+                    multiline: False
